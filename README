@@ -45,6 +45,9 @@ The end user simply has to unzip the folder to their Windows machine, and double
 
 If they do not have the proper driver install, I include drivers for both CP210x and CP9201 so they can install those first (only need the first time).
 
+Disclaimer: I am not a VBScript developer and cobbled this together from other sources, including:
+http://github.com/todbot/usbSearch (Scan COM ports)
+and
+https://gist.github.com/codeartery/1f80a3033697f7d196e6c0604fff7aa5 (File picker)
 
-
-
+I'm open to any feedback or improvements.
