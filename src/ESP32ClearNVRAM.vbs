@@ -21,6 +21,8 @@ for each pname in portnames
 Next
 
 if found=false Then wscript.echo "No ESP32 com port found"
+
+
 '
 ' For all the keys in an entity, see
 'http://msdn.microsoft.com/en-us/library/windows/desktop/aa394353(v=vs.85).aspx
