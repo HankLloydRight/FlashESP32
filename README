@@ -1,0 +1,50 @@
+
+This repository has two VBScript files to flash ESP32 over USB in the field.
+
+ESP32ClearNVRAM.vbs -- running this totally clears the NVRAM on the ESP32.
+ESP32FWupdate.vbs -- uploads a firmware.bin file as well as a spiffs.bin or littlefs.bin file to the ESP32FWupdate
+
+This file has several settings to adjust for your particular build environment.
+The settings below are for my own Platform.io projects -- the memory locations for your BIN files will likely vary
+Try a "verbose" build in Platform.io to figure out the proper settings for your project.
+These values are also available in the Arduino IDE output panel right before uploading
+The bootloader.bin, partitions.bin, and spiffs.bin/littlefs.bin files should be in your project build folder
+The boot_app0.bin will be in the platform.io folder for your particular build environment.
+
+flashfreq="40m"
+baud="921600"
+bootloc="0x1000"
+bootloaderbin="bootloader.bin"
+partloc="0x8000"
+partbin="partitions.bin"
+bootapploc="0xe000"
+bootapp="boot_app0.bin"
+firmwareloc="0x10000"
+spiffloc="0x3B0000"
+spiffbin="littlefs.bin"
+
+
+Both VBScript files first look for any attached ESP32 boards by looking at currently connected USB devices with any of these strings: "CP210", "CH340", or "CH9102"
+If it finds one, then it proceeds to prompt the user to select the firmware.bin file to upload (although this could be hard-coded if you wish).
+The VBScript then uploads the firmware and then uploads the spiffs.bin or littlefs.bin file and reboots the device.
+
+You will also need the esptool.exe or the esptool.py programs. This script is written for the esptool.exe file, but can be modified if you need to run the python version instead.
+
+When deploying this in the field, I include all the following in a compressed folder:
+ESP32ClearNVRAM.vbs
+ESP32FWupdate.vbs
+bootloader.bin
+partitions.bin
+boot_app0.bin
+littlefs.bin
+esptool.exe
+CP210x_Universal_Windows_Driver.zip
+CH9102_WIN.EXE
+
+The end user simply has to unzip the folder to their Windows machine, and double-click ESP32ClearNVRAM.vbs to clear the NVRAM (this step is optional, but I found helps when running into odd issues), then they double click ESP32FWupdate.vbs to update the firmware.
+
+If they do not have the proper driver install, I include drivers for both CP210x and CP9201 so they can install those first (only need the first time).
+
+
+
+
