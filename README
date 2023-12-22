@@ -43,7 +43,7 @@ CH9102_WIN.EXE
 
 The end user simply has to unzip the folder to their Windows machine, and double-click ESP32ClearNVRAM.vbs to clear the NVRAM (this step is optional, but I found helps when running into odd issues), then they double click ESP32FWupdate.vbs to update the firmware.
 
-If they do not have the proper driver install, I include drivers for both CP210x and CP9201 so they can install those first (only need the first time).
+If they do not have the proper driver installed, I include drivers for both CP210x and CP9201 so they can install those first (only needed the first time).
 
 Disclaimer: I am not a VBScript developer and cobbled this together from other sources, including:
 http://github.com/todbot/usbSearch (Scan COM ports)
